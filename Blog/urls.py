@@ -1,5 +1,5 @@
 """
-URL configuration for Bog project.
+URL configuration for Blog project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import main_view, google_redirect_view, youtube_redurect_view
+from posts.views import main_view, posts_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view),
-    path('google/', google_redirect_view),
-    path('youtube/', youtube_redurect_view)
+    path('posts/', posts_view)
+    # path('google/', google_redirect_view),
+    # path('youtube/', youtube_redurect_view)
 ]
