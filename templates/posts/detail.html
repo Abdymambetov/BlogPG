@@ -1,0 +1,42 @@
+{%extends 'layouts/index.html' %}
+
+{% block content%}
+    <style type='text/css'>
+        .path_block{
+            width: 80%;
+            padding: 10px;
+            margin-left: 10px;
+        }
+        .dates{
+            display: flex;
+            justify-content: space-between;
+        }
+        .comments{
+            margin: 10px 0 0 0;
+
+        }
+        .comment_block{
+            border: 1px solid #242b2e;
+            background: #cbcbcb;
+            color: #242b2e;
+            margin: 0 0 10px 0;
+            padding: 10px;
+        }
+    </style>
+    <div class='post_block'>
+        <h1>{{post.title}}</h1>
+        <h5>{{post.description}}</h5>
+        <div class='dates'>
+            <h5>{{post.created_date}}</h5>
+            <h5>{{post.modified_date}}</h5>
+        </div>
+        <div class='comments'>
+            {% for comment in comments%}
+                <div class='comment_block'>
+                    <h5>{{comment.text}}</h5>
+                    <h5>{{comment.created_date}}</h5>
+                </div>
+            {% endfor %}
+        <div>
+    </div>
+{% endblock %}

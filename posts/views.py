@@ -16,6 +16,16 @@ def posts_view(request):
             'posts': posts
         })
 
+def post_detail_view(request, id):
+    if request.method == 'GET':
+        post = Post.objects.get(id=id)
+        comments = post.comment_set.all()
+        print(comments)
+        context = {
+            'post': post,
+            'comments': comments,
+        }
+        return render(request, 'posts/detail.html', context=context)
 # def google_redirect_view(request):
 #     return redirect('https://google.com')
 #
