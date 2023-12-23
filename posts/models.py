@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+class Hashtag(models.Model):
+    title = models.CharField(max_length=55)
 
 class Post(models.Model):
     image = models.ImageField(blank=True, null=True)
@@ -10,6 +12,7 @@ class Post(models.Model):
     rate = models.FloatField()
     created_date = models.DateField(auto_now=True)
     modified_date = models.DateField(auto_now_add=True)
+    hashtags = models.ManyToManyField(Hashtag)
 
 
 class Comment(models.Model):

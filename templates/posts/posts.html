@@ -10,12 +10,23 @@
             justify-content: space-between;
             flex-wrap: wrap;
         }
+        .card{
+            margin-bottom: 30px;
+            
+        }
+        .posts img{
+            width: 100%;
+        }
     </style>
     <div class="posts">
         {% for post in posts %}
             <div class="card" style="width: 18rem;">
               <div class="card-body">
-                  <img src={{ post.image }} alt="hello">
+                {%if post.image%}
+                    <img src="/media/{{post.image}}/" alt='not found'>
+                {%else %}
+                    <img src="/media/Rectangle 57.png" alt=''>
+                {% endif %}
                 <h5 class="card-title">{{ post.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ post.created_date }}</h6>
                 <p class="card-text">{{ post.description }}</p>

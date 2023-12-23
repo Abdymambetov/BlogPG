@@ -2,7 +2,7 @@
 
 {% block content%}
     <style type='text/css'>
-        .path_block{
+        .post_block{
             width: 80%;
             padding: 10px;
             margin-left: 10px;
@@ -22,10 +22,26 @@
             margin: 0 0 10px 0;
             padding: 10px;
         }
+        .post_block img{
+            width: 100%;
+
+        }
     </style>
     <div class='post_block'>
+        {% if  post.image%}
+            <img src="/media/{{post.image}}/" alt='image not found :('>
+        {% else %}
+            <img src="/media/Rectangle 57.png" alt=''>
+        {% endif %}
         <h1>{{post.title}}</h1>
         <h5>{{post.description}}</h5>
+        <div class='hashtags'>
+            {% for  hashtag in hashtags  %}
+                <div class='hashtag'>
+                    <h6>{{hashtag.title}}</h6>
+                </div>
+            {% endfor %}
+        </div>
         <div class='dates'>
             <h5>{{post.created_date}}</h5>
             <h5>{{post.modified_date}}</h5>
