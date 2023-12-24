@@ -46,6 +46,11 @@
             <h5>{{post.created_date}}</h5>
             <h5>{{post.modified_date}}</h5>
         </div>
+        <form action='/posts/{{post.id}}/' method='post'>
+            {%csrf_token%}
+            {{comment_form.as_p}}
+            <input type='submit'>
+        </form>
         <div class='comments'>
             {% for comment in comments%}
                 <div class='comment_block'>

@@ -1,0 +1,19 @@
+{% extends 'layouts/index.html' %}
+
+
+{% block content %}
+    <form action="/posts/create/" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <p>Titile {{title_error}}</p>
+        <input type='text' name='title' placheolder='Enter somthing'>
+
+        <p>Description {{description_error}}<p>
+        <textarea name='description' cols='30' rows='10'></textarea>
+
+        <p>Rate</p>
+        <input type='number' name='rate'> {% endcomment %}
+        <input type='submit'>
+    </form>
+{% endblock %}
+    
