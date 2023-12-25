@@ -33,7 +33,10 @@
         {% else %}
             <img src="/media/Rectangle 57.png" alt=''>
         {% endif %}
-        <h1>{{post.title}}</h1>
+        <div style='display: flex; justify-content: space-between'>
+            <h1>{{post.title}}</h1>
+            <h1>{{post.author.username}}</h1>
+        </div>
         <h5>{{post.description}}</h5>
         <div class='hashtags'>
             {% for  hashtag in hashtags  %}
@@ -54,6 +57,7 @@
         <div class='comments'>
             {% for comment in comments%}
                 <div class='comment_block'>
+                    <h3>{{comment.author.username}}</h3>
                     <h5>{{comment.text}}</h5>
                     <h5>{{comment.created_date}}</h5>
                 </div>

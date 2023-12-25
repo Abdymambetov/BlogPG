@@ -24,8 +24,11 @@ def posts_view(request):
             posts = Post.objects.all()
 
         return render(request, 'posts/posts.html', context={
-            'posts': posts
+            'posts': posts,
+            'user': None if request.user.is_anonymous else request.user
         })
+
+
 
 def post_detail_view(request, id):
     if request.method == 'GET':
@@ -47,6 +50,7 @@ def post_detail_view(request, id):
 
         if form.is_valid():
             Comment.objects.create(
+                author = request.user,
                 post_id=id,
                 text=form.cleaned_data.get('text')
             )
@@ -88,6 +92,7 @@ def post_create_view(request):
                 # title=request.POST.get('title'),
                 # description=request.POST.get('description'),
                 # rate=request.POST.get('rate', 0)
+                author = request.user,
                 title = form.cleaned_data.get('title'),
                 description = form.cleaned_data.get('description'),
                 rate = form.cleaned_data.get('rate', 0)
