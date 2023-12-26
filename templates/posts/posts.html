@@ -18,6 +18,12 @@
             width: 100%;
         }
     </style>
+    <div class='search'>
+        <form action='/posts/' method='get'>
+            <input type='text' name='text'>
+            <input type='submit' value='search'>
+        </form>
+    </div>
     <div class="posts">
         {% for post in posts %}
             <div class="card" style="width: 18rem;">
@@ -35,6 +41,14 @@
             </div>
         {% endfor %}
     </div>
+    <div class='page'>
+        {% for page in pages  %}
+            <a href='/posts/?page={{page}}'>
+                <button>{{page}}</button>
+            </a>
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 

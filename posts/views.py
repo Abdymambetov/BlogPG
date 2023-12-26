@@ -2,9 +2,12 @@
 from django.shortcuts import render, redirect
 from posts.models import Post, Hashtag, Comment
 from posts.forms import PostCreateForm, CommentCreateForm
-# import reder
+
 
 # Create your views here.
+
+
+PAGINATION_LIMIT = 3
 
 def main_view(request):
     return render(request, 'layouts/index.html')
@@ -17,15 +20,31 @@ def posts_view(request):
     # print(a is b)
     if request.method == 'GET':
         hashtag_id = int(request.GET.get('hashtag_id', 0))
+        text = request.GET.get('text')
+        page = int(request.GET.get('page', 1))
+
 
         if hashtag_id:
             posts = Post.objects.filter(hashtags__in=[hashtag_id])
         else: 
             posts = Post.objects.all()
 
+        if text:
+            posts = Post.objects.filter(title__contains=text)
+
+        max_page = posts.__len__() / PAGINATION_LIMIT
+        print(max_page)
+        if round(max_page) <= max_page: 
+            max_page = round(max_page)+1
+
+        max_page = int(max_page)
+        print(max_page)
+        posts = posts[PAGINATION_LIMIT * (page-1):PAGINATION_LIMIT * page]
+
         return render(request, 'posts/posts.html', context={
             'posts': posts,
-            'user': None if request.user.is_anonymous else request.user
+            'user': None if request.user.is_anonymous else request.user,
+            'pages': range(1, max_page+2)
         })
 
 
