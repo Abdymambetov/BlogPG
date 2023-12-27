@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <form action="/posts/create/" method='post'>
+    <form action="/posts/create/" method='post' enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form.as_p }}
         {% comment %} <p>Titile {{title_error}}</p>

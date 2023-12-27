@@ -1,0 +1,15 @@
+.posts{
+    width: 80%;
+    margin: 0 0 0 10%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card{
+    margin-bottom: 30px;
+    
+}
+.posts img{
+    width: 100%;
+}

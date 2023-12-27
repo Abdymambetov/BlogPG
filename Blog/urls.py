@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import main_view, posts_view, post_detail_view, hashtags_view, post_create_view
+from posts.views import main_view, posts_view, post_detail_view, hashtags_view, post_create_view, PostsCBV
 from django.conf.urls.static import static
 from Blog import settings
 from users.views import login_view, logout_view, register_view
@@ -25,7 +25,8 @@ from users.views import login_view, logout_view, register_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view),
-    path('posts/', posts_view),
+    # path('posts/', posts_view),
+    path('posts/', PostsCBV.as_view()),
     path('posts/<int:id>/', post_detail_view),
     path('posts/create/', post_create_view),
     path('hashtags/', hashtags_view),

@@ -1,23 +1,12 @@
 {% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel='stylesheet' href="{% static 'posts.css'%}">
+{% endblock %}
+    
 
 {% block content %}
-    <style type="text/css">
-        .posts{
-            width: 80%;
-            margin: 0 0 0 10%;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .card{
-            margin-bottom: 30px;
-            
-        }
-        .posts img{
-            width: 100%;
-        }
-    </style>
     <div class='search'>
         <form action='/posts/' method='get'>
             <input type='text' name='text'>
